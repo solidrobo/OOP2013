@@ -5,8 +5,8 @@ public class Player {
 	 * See klassi eesmärk on talletada mängija nime ja punkte
 	 * 
 	 */
-	private String name;
-	private int score;
+	String name;
+	int score;
 	public String getName() {
 		return name;
 	}
