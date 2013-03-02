@@ -2,7 +2,7 @@
 public class Player {
 	/*
 	 * 
-	 * See klassi eesmärk on talletada mängija nime ja punkte
+	 * See klassi eesmï¿½rk on talletada mï¿½ngija nime ja punkte
 	 * 
 	 */
 	String name;
@@ -19,16 +19,5 @@ public class Player {
 	public String toString(){
 		return name + " " + score;
 	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
 
-	public int getScore() {
-		return score;
-	}
-
-	public void setScore(int score) {
-		this.score = score;
-	}
 }
