@@ -2,7 +2,7 @@
 public class Player {
 	/*
 	 * 
-	 * See klassi eesm�rk on talletada m�ngija nime ja punkte
+	 * Selle klassi eesm�rk on talletada m�ngija nime ja punkte
 	 * 
 	 */
 	String name;
