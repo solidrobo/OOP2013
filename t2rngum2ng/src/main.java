@@ -7,7 +7,7 @@ public class main {
 	 * Peaklass milles kasutatakse player klassi ja t�ringuveeretamise klassi
 	 *
 	 */
-	static int scoreLimit = 91; // V6itmiseks vajalik punktisumma
+	static int scoreLimit = 10; // V6itmiseks vajalik punktisumma
 	public static void main(String[] args) {
 		dieRoll die = new dieRoll(); // t2ringu veeretamiseks tehakse isend
 		
