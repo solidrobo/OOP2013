@@ -1,6 +1,8 @@
 
 public class Body {
 
+	//Sisaldab kehadega seotud parameetreid
+	
 	int mass;
 	double x;
 	double y;

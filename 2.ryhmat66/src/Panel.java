@@ -7,14 +7,21 @@ import javax.swing.*;
 
 
 public class Panel extends JPanel{
+	
+	//
 	Body[] bodies = new Body[10];
+	//jõu ja gravitatsiooni välja vektorid
 	Vector[] field = new Vector[10];
 	Vector[] force = new Vector[10];
 	int numberOfBodies = 0;
-	String error="";
+	String error = "";
+	
+	//gravitatsiooniline konstant sklaleeritud ülesse 10 miljardit korda
 	double G = Math.pow(6.674, -1);
 	
 	Panel(){
+		
+	//iga hiirevajutuse peale luuakse uus keha
 	  addMouseListener(new MouseAdapter() {
           public void mousePressed(MouseEvent e) {
         	  if (numberOfBodies<bodies.length){
@@ -37,20 +44,21 @@ public class Panel extends JPanel{
 	  
 	}
 	
+	//Arvutatakse ühe keha poolt tekitatud gravitatsiooniline väliühes punktis
 	Vector gravitationalField(double x, double y, int mass){
 		Vector r = new Vector(x,y);
 		Vector field;
 		field = r.dot(-G*mass*Math.pow(r.magnitude(), -2));
 		return field;
 	}
-	
+	//Arvutatakse ühele kehale mõjuv jõud
 	Vector force(Vector field, int mass){
 		Vector force = field.dot(mass);
 		return force;
 	}
 	
 	void calculate(){
-		
+		//iga keha asukohas arvutatakse välja gravitatsiooniline väli liites kokku kõikide kehade poolt tekitatud gravitatsioonilised väljad
 		for(int i = 0; i<numberOfBodies;i++){
 			field[i] = new Vector(0,0);
 			Body body = bodies[i];
@@ -61,7 +69,7 @@ public class Panel extends JPanel{
 		}
 		
 	}
-
+	//joonistatakse iga keha tahvlile ning lisatakse jõud
 	public void paintComponent(Graphics g) {
         super.paintComponent(g);       
         for(int i=0;i<numberOfBodies;i++){
