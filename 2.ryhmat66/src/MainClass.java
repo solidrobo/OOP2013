@@ -15,6 +15,7 @@ public class MainClass extends JFrame {
 		f.setBounds(screenSize.width/2-300, screenSize.height/2-300, 600, 600);
 		f.add(panel);
 		f.setVisible(true);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//Tsükkliliselt arvutatakse süsteemi olek ning joonistatakse tahvel uuesti
 		for (;;) {

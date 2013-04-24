@@ -16,7 +16,7 @@ public class Panel extends JPanel{
 	int numberOfBodies = 0;
 	String error = "";
 	
-	//gravitatsiooniline konstant sklaleeritud ülesse 10 miljardit korda
+	//gravitatsiooniline konstant skaleeritud ülesse 10 miljardit korda
 	double G = Math.pow(6.674, -1);
 	
 	Panel(){
@@ -64,7 +64,7 @@ public class Panel extends JPanel{
 			Body body = bodies[i];
 			for (int j=0;j<numberOfBodies;j++)
 				if(body!=bodies[j])
-					field[i]= field[i].add(gravitationalField(body.x-bodies[j].x,body.y-bodies[j].y,bodies[j].mass));
+					field[i]= field[i].add(gravitationalField(bodies[j].x-body.x,bodies[j].y-body.y,bodies[j].mass));
 			force[i]= force(field[i],body.mass);
 		}
 		
