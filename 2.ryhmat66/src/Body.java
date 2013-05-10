@@ -16,7 +16,12 @@ public class Body {
 		this.y = y;
 		this.mass = mass;
 		this.diameter = diameter;
-		this.speed = new Vector(dx,dy);
+		this.speed = new Vector(-dx,-dy);
+	}
+	
+	void tick(){
+		this.x-=speed.x;
+		this.y-=speed.y;
 	}
 	
 }

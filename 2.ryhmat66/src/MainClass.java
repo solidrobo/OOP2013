@@ -1,9 +1,16 @@
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+//import javax.swing.JPanel;
 
 
 public class MainClass extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1548233817403693158L;
 
 	public static void main(String[] args) {
 		
@@ -18,8 +25,9 @@ public class MainClass extends JFrame {
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		//Tsükkliliselt arvutatakse süsteemi olek ning joonistatakse tahvel uuesti
-		for (;;) {
+		while (true) {
 			try {
+				panel.setBackground(Color.black);
 				panel.repaint();
 				panel.calculate();
 				Thread.sleep(10);
@@ -30,10 +38,4 @@ public class MainClass extends JFrame {
 
 	}
 	
-	
-
-	public int roll() {  // t2ringuveeretamine
-     	int throw1 = (int)(Math.random()*6) + 1;
-     	return throw1; 
-	}
 }
