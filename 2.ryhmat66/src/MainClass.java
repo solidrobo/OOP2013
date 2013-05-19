@@ -2,14 +2,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
-//import javax.swing.JPanel;
-
 
 public class MainClass extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1548233817403693158L;
 
 	public static void main(String[] args) {
@@ -23,11 +18,10 @@ public class MainClass extends JFrame {
 		f.add(panel);
 		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		panel.setBackground(Color.black);
 		//Tsükkliliselt arvutatakse süsteemi olek ning joonistatakse tahvel uuesti
 		while (true) {
 			try {
-				panel.setBackground(Color.black);
 				panel.repaint();
 				panel.calculate();
 				Thread.sleep(10);
