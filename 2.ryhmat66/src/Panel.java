@@ -14,11 +14,8 @@ import javax.swing.*;
 
 public class Panel extends JPanel{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	//
+	
 	Body[] bodies = new Body[10];
 	//jõu ja gravitatsiooni välja vektorid
 	Vector[] field = new Vector[10];
