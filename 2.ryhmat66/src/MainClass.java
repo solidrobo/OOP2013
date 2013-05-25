@@ -41,7 +41,7 @@ public class MainClass extends JFrame {
 			try {
 				panel.repaint();
 				panel.calculate();
-				Thread.sleep(100);
+				Thread.sleep(10);
 			}
 			catch (InterruptedException e) {
 				panel.closeWriter();
