@@ -8,6 +8,7 @@ public class Body {
 	double y;
 	Vector speed;
 	boolean isAlive;
+	boolean isLog;
 	
 	Body(double x, double y, double mass, int diameter, double dx, double dy){
 		this.x = x;
@@ -15,6 +16,7 @@ public class Body {
 		this.mass = mass;
 		this.speed = new Vector(-dx,-dy);
 		this.isAlive=true;
+		this.isLog=false;
 	}
 	
 	void tick(){

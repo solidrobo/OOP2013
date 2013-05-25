@@ -9,7 +9,7 @@ public class MainClass extends JFrame {
 
 	public static void main(String[] args) {
 		
-		//luuakse uus freim koos tahvliga ning paigutatakse see ekraani keskele
+		//luuakse uus frame koos tahvliga ning paigutatakse see ekraani keskele
 		JFrame f = new JFrame("Spaaaaaaace");
 		Panel panel = new Panel();
 		
@@ -19,14 +19,15 @@ public class MainClass extends JFrame {
 		f.setVisible(true);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panel.setBackground(Color.black);
-		//Tsükkliliselt arvutatakse süsteemi olek ning joonistatakse tahvel uuesti
+		//Tsükliliselt arvutatakse süsteemi olek ning joonistatakse tahvel uuesti
 		while (true) {
 			try {
 				panel.repaint();
 				panel.calculate();
-				Thread.sleep(10);
+				Thread.sleep(100);
 			}
 			catch (InterruptedException e) {
+				panel.closeWriter();
 			}
 		}
 

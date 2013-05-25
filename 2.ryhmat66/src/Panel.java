@@ -5,6 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -13,7 +14,17 @@ import javax.swing.*;
 
 
 public class Panel extends JPanel{
+	java.io.File fail;
+	java.io.FileWriter pw;
 	
+	void closeWriter(){
+		try {
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	private static final long serialVersionUID = 1L;
 	
 	Body[] bodies = new Body[10];
@@ -30,6 +41,13 @@ public class Panel extends JPanel{
 	double earthMass= 5.972*Math.pow(10, 24)/scale;
 	
 	Panel(){
+		fail = new java.io.File("crash");
+		try {
+			pw = new java.io.FileWriter(fail, true);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		bodies[numberOfBodies++] = new Body(this.getBounds().getCenterX(),this.getBounds().getCenterY(),earthMass,100,0,0);
 		JButton reset = new JButton("RESET");
 		reset.addActionListener(new ActionListener(){
@@ -72,7 +90,7 @@ public class Panel extends JPanel{
 	  
 	}
 	
-	//Arvutatakse ühe keha poolt tekitatud gravitatsiooniline väliühes punktis
+	//Arvutatakse ühe keha poolt tekitatud gravitatsiooniline väli ühes punktis
 	Vector gravitationalField(double x, double y, double mass){
 		Vector r = new Vector(x,y);
 		Vector field;
@@ -101,8 +119,8 @@ public class Panel extends JPanel{
         int zero_x = r.width/2;
         int zero_y = r.height/2;
 
-        BufferedImage img=null;
-        BufferedImage img2=null;
+        BufferedImage img = null;
+        BufferedImage img2 = null;
     
         try {
 			img = ImageIO.read(new File("img/satellite.png"));
@@ -123,8 +141,21 @@ public class Panel extends JPanel{
 	        		g.drawImage(img, x-img.getWidth()/2, y-img.getHeight()/2, null);
 	        	}
 	        	double distance = Math.sqrt(Math.pow(Math.abs(relative_x-x),2) + Math.pow(Math.abs(relative_y-y),2));
-	        	if(distance<=256/2-img.getWidth()/2)
+	        	if(distance<=256/2-img.getWidth()/2){
 	        		bodies[i].isAlive=false;
+	        		
+	        	}
+	        	if(!bodies[i].isLog&&!bodies[i].isAlive&&i!=0){
+        			try {
+						java.io.FileWriter pw = new java.io.FileWriter(fail);
+						pw.append("body nr " + i + " kukkus alla ajal " + System.currentTimeMillis() + "\n" );
+						System.out.println(fail.getAbsolutePath());
+						bodies[i].isLog=true;
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} 
+        		}
 	        	} catch (java.lang.NullPointerException e){};
         } 
     }  
