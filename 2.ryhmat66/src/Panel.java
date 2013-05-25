@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -44,10 +45,7 @@ public class Panel extends JPanel{
 		fail = new java.io.File("crash");
 		try {
 			pw = new java.io.FileWriter(fail, true);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		} catch (IOException e1) {}
 		bodies[numberOfBodies++] = new Body(this.getBounds().getCenterX(),this.getBounds().getCenterY(),earthMass,100,0,0);
 		JButton reset = new JButton("RESET");
 		reset.addActionListener(new ActionListener(){
@@ -147,7 +145,6 @@ public class Panel extends JPanel{
 	        	}
 	        	if(!bodies[i].isLog&&!bodies[i].isAlive&&i!=0){
         			try {
-						java.io.FileWriter pw = new java.io.FileWriter(fail);
 						pw.append("body nr " + i + " kukkus alla ajal " + System.currentTimeMillis() + "\n" );
 						System.out.println(fail.getAbsolutePath());
 						bodies[i].isLog=true;
